@@ -1,0 +1,63 @@
+{
+	"name": "bambootask",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.1",
+		"@testing-library/jest-dom": "^5.16.4",
+		"@testing-library/react": "^13.1.1",
+		"@testing-library/user-event": "^13.5.0",
+		"axios": "^0.26.1",
+		"date-fns": "^2.25.0",
+		"prop-types": "^15.8.1",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0",
+		"react-icons": "^4.3.1",
+		"react-query": "^3.34.16",
+		"react-redux": "^8.0.1",
+		"react-scripts": "5.0.1",
+		"web-vitals": "^2.1.4"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"pre-push": "yarn lint:fix && yarn format && yarn build && git add -A ."
+		}
+	},
+	"lint-staged": {
+		"*.+(js|jsx)": "eslint --fix",
+		"*.+(json|css|md)": "prettier --write"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"lint": "eslint --ext .jsx --ext .js src/",
+		"lint:fix": "eslint --fix",
+		"format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.5",
+		"eslint": "8.11.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"husky": "4",
+		"lint-staged": "^12.3.7",
+		"postcss": "^8.4.12",
+		"prettier": "^2.6.0",
+		"tailwindcss": "^3.0.24"
+	}
+}

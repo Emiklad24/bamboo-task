@@ -1,0 +1,32 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,jsx}]
+charset = utf-8
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Indentation override for all JS/TS under lib directory
+[src/**/*.{js}]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either *.json or *.yml
+[{*.json,*.yml}]
+indent_style = space
+indent_size = 2
