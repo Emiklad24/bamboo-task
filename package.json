@@ -18,24 +18,11 @@
 		"react-scripts": "5.0.1",
 		"web-vitals": "^2.1.4"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"pre-push": "yarn lint:fix && yarn format && yarn build && git add -A ."
-		}
-	},
-	"lint-staged": {
-		"*.+(js|jsx)": "eslint --fix",
-		"*.+(json|css|md)": "prettier --write"
-	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"lint": "eslint --ext .jsx --ext .js src/",
-		"lint:fix": "eslint --fix",
-		"format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
+		"eject": "react-scripts eject"
 	},
 	"browserslist": {
 		"production": [
