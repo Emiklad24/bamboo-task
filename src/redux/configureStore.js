@@ -15,7 +15,7 @@ const reducers = combineReducers({
 const persistConfig = {
 	key: "bamboo-task-persist-store",
 	storage,
-	version: 2.5,
+	version: 3,
 	stateReconciler: hardSet,
 }
 
