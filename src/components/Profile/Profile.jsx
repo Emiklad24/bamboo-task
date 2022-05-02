@@ -1,9 +1,17 @@
+import useFetchOtherUserDetail from "../../hooks/useFetchOtherUserDetail.hook"
 import React from "react"
+import { useSelector } from "react-redux"
+import { FaRegEnvelope } from "react-icons/fa"
+import { RiTwitterLine } from "react-icons/ri"
+import { AiOutlineEnvironment } from "react-icons/ai"
+import { BiLink } from "react-icons/bi"
 
 const Profile = () => {
+	useFetchOtherUserDetail()
+	const { user } = useSelector((state) => state.auth)
 	return (
 		<aside className="basis-1/4 px-2 flex flex-col items-start and justify-start w-full">
-			<div className="circle absolute -top-7 ">
+			<div className="circle absolute -top-7 mb-8">
 				<div className="w-64 h-64 bg-white rounded-full">
 					<img
 						src="https://avatars.githubusercontent.com/u/46732287?v=4"
@@ -20,17 +28,17 @@ const Profile = () => {
 			<br />
 			<br />
 			{/* details */}
-			<div className="relative flex flex-col items-start justify-center border-b py-4">
-				<span className="text-xl font-semibold capitalize">Name</span>
-				<span className="text-lg text-gray-600 lowercase">Username</span>
+			<div className="mt-20 flex flex-col items-start justify-center border-b py-4">
+				<span className="text-xl font-semibold capitalize">{user?.user?.name || ""}</span>
+				<span className="text-lg text-gray-600 lowercase">
+					{user?.user?.username || ""}
+				</span>
 				<button className="my-4 w-full px-4 py-1 text-center text-gray-800 font-semibold text-sm bg-gray-100 border border-gray-300 hover:bg-gray-200 rounded">
 					follow
 				</button>
-				<p className="text-gray-800 font-semibold text-sm">
-					Trying to make the world a better place
-				</p>
-				<div className="flex flex-row items-center justify-start my-4 text-gray-700 text-xs ">
-					<span className="flex flex-row items-center justify-center hover:text-blue-500 cursor-pointer">
+				<p className="text-gray-800 font-semibold text-sm">{user?.user?.bio || ""}</p>
+				<div className="flex flex-row items-center justify-start my-4 text-gray-700 text-sm">
+					<span className="flex flex-row items-center justify-center hover:text-blue-500 cursor-pointer ">
 						<svg
 							text="muted"
 							aria-hidden="true"
@@ -39,7 +47,7 @@ const Profile = () => {
 							version="1.1"
 							width="16"
 							data-view-component="true"
-							class="octicon octicon-people"
+							className="octicon octicon-people"
 						>
 							<path
 								fill="currentColor"
@@ -48,55 +56,50 @@ const Profile = () => {
 							></path>
 						</svg>
 						<p className="ml-1 ">
-							<strong>158</strong> followers
+							<strong>{user?.user?.followers || 0}</strong> followers .
 						</p>
 					</span>
 
 					<span className="mx-2 flex flex-row items-center justify-center hover:text-blue-500 cursor-pointer">
 						<p className="ml-1">
-							<strong>23</strong> following
+							<strong>{user?.user?.following || 0}</strong> following
 						</p>
 					</span>
 				</div>
-				<p className="flex flex-row items-start justify-center text-sm">
+				<p className="flex flex-row items-start justify-center text-sm mb-2">
 					<span className="mr-2 text-gray-700">
-						<svg
-							class="octicon octicon-location"
-							viewBox="0 0 16 16"
-							version="1.1"
-							width="16"
-							height="16"
-							aria-hidden="true"
-						>
-							<path
-								fill="currentColor"
-								fill-rule="evenodd"
-								d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"
-							></path>
-						</svg>
+						<AiOutlineEnvironment size={20} />
 					</span>
-					FCT, Abuja
+					{user?.user?.location || ""}
 				</p>
+				<p className="flex flex-row items-start justify-center text-sm mb-2">
+					<span className="mr-2 text-gray-700">
+						<FaRegEnvelope size={20} />
+					</span>
+					{user?.user?.email || ""}
+				</p>
+				<a
+					href={`https://twitter.com/${user?.user?.twitter_username || ""}`}
+					className="hover:text-blue-500 hover:underline"
+					target="_blank"
+				>
+					<p className="flex flex-row items-start justify-center text-sm mb-2">
+						<span className="mr-2 text-gray-700">
+							<RiTwitterLine size={20} />
+						</span>
+						{user?.user?.twitter_username || ""}
+					</p>
+				</a>
 				<p className="flex flex-row items-start justify-center text-sm">
 					<span className="mr-2 text-gray-700">
-						<svg
-							aria-hidden="true"
-							height="16"
-							viewBox="0 0 16 16"
-							version="1.1"
-							width="16"
-							data-view-component="true"
-							class="octicon octicon-link"
-						>
-							<path
-								fill="currentColor"
-								fill-rule="evenodd"
-								d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-							></path>
-						</svg>
+						<BiLink size={20} />
 					</span>
-					<a href="/" className="hover:text-blue-500 hover:underline">
-						https://website.com
+					<a
+						href={user?.user?.blog || ""}
+						className="hover:text-blue-500 hover:underline"
+						target="_blank"
+					>
+						{user?.user?.blog || ""}
 					</a>
 				</p>
 			</div>
