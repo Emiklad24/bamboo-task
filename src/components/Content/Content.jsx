@@ -4,10 +4,11 @@ import useFetchGitHubRepos from "../../hooks/useFetchGithubPublicRepo.hook"
 import RepoCard from "../../components/RepoCard/RepoCard"
 import { AnimatePresence } from "framer-motion"
 import { useSelector } from "react-redux"
+import { BiError, BiSad } from "react-icons/bi"
 
 const Content = () => {
 	const { repos, filterTerm } = useSelector((state) => state.repos)
-	const { isLoading } = useFetchGitHubRepos()
+	const { isLoading, isError } = useFetchGitHubRepos()
 	const filteredRepo = repos.filter(
 		(repo) => repo.name.toLowerCase().includes(filterTerm) || repo.name === filterTerm
 	)
@@ -19,13 +20,25 @@ const Content = () => {
 					<div className="duration-400 flex items-center justify-center h-32">
 						Loading...
 					</div>
+				) : isError ? (
+					<div className="duration-400 flex items-center justify-center h-48 text-red-700 border-t py-4 w-full border-b mt-2">
+						Error fetching repos
+						<BiError className="ml-4" size={30} />
+					</div>
 				) : (
 					<>
 						<FilterBar />
 						<AnimatePresence>
-							{filteredRepo?.map((repo, i) => (
-								<RepoCard repo={repo} key={repo.id} currentIndex={i} />
-							))}
+							{filteredRepo.length === 0 ? (
+								<div className="duration-400 flex items-center justify-center h-48 text-red-700 border-t py-4 w-full border-b">
+									Result empty
+									<BiSad className="ml-4" size={30} />
+								</div>
+							) : (
+								filteredRepo.map((repo, i) => (
+									<RepoCard repo={repo} key={repo.id} currentIndex={i} />
+								))
+							)}
 						</AnimatePresence>
 					</>
 				)}

@@ -1,5 +1,9 @@
 import axios from "axios"
 
+/**
+ * @desc fetches first 20 public repo of a user
+ * @returns {Array}
+ */
 const fetchGitHubRepos = async ({ queryKey }) => {
 	const username = queryKey[1]
 	const res = await axios?.get(

@@ -16,7 +16,7 @@ const Home = () => {
 			<motion.button
 				className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
 				onClick={loginPopupHandler}
-				whileHover={{ scale: 1.1, position: "relative", zIndex: 2 }}
+				whileHover={{ scale: 1.03, position: "relative", zIndex: 2 }}
 				whileTap={{ scale: 0.95 }}
 			>
 				<IoLogoGithub size={30} className="mr-2" />

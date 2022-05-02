@@ -2,12 +2,13 @@ import { useTransition } from "react"
 import { MdOutlineArrowDropDown } from "react-icons/md"
 import { AiOutlineClose } from "react-icons/ai"
 import { IoCheckmarkOutline } from "react-icons/io5"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { updateFilterTerm } from "../../redux/repoReducer"
 
 const FilterBar = () => {
 	const [_, startTransition] = useTransition()
 	const dispatch = useDispatch()
+	const { filterTerm } = useSelector((state) => state.repos)
 
 	function updateFilterHandler(event) {
 		startTransition(() => {
@@ -23,6 +24,7 @@ const FilterBar = () => {
         form-control block w-full px-2 py-1 text-sm font-normal text-gray-900 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out my-4 focus:text-gray-500 focus:bg-white focus:border-2 focus:border-blue-600 focus:outline-none duration-400"
 				placeholder="Find a repository..."
 				onChange={updateFilterHandler}
+				value={filterTerm}
 			/>
 
 			{/* filter buttons */}
