@@ -3,12 +3,19 @@ import { formatDistance } from "date-fns"
 import { MdOutlineArrowDropDown } from "react-icons/md"
 import { motion } from "framer-motion"
 
-const RepoCard = ({ repo }) => {
+const RepoCard = ({ repo, currentIndex }) => {
 	return (
 		<motion.div
 			className="w-full flex flex-row items-center justify-between border-t py-4"
-			whileHover={{ scale: 1.03, zIndex: 2 }}
-			whileTap={{ scale: 0.95 }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			// transition={{
+			// 	duration: currentIndex == 0 ? 1.6 : currentIndex * 0.5,
+			// 	delay: currentIndex * 0.8,
+			// }}
+			layoutId={repo.id}
+			key={currentIndex}
 		>
 			<div className="basis-3/4 flex flex-col items-start justify-center">
 				{/* title and privacy */}
