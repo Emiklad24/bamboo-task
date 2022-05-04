@@ -10,8 +10,8 @@ const RepoCard = ({ repo, currentIndex }) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
-			layoutId={repo.id}
-			key={repo.id}
+			layoutId={repo?.id || currentIndex}
+			key={repo?.id || currentIndex}
 		>
 			<div className="basis-3/4 flex flex-col items-start justify-center">
 				{/* title and privacy */}

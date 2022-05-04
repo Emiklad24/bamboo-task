@@ -8,9 +8,6 @@ import { BiError, BiSad } from "react-icons/bi"
 // import Fuse from "fuse.js"
 
 const Content = () => {
-	const options = {
-		keys: ["name", "full_name", "language"],
-	}
 	const { repos, filterTerm } = useSelector((state) => state.repos)
 	const { isLoading, isError } = useFetchGitHubRepos()
 	const filteredRepo = repos.filter(
@@ -39,7 +36,7 @@ const Content = () => {
 									<BiSad className="ml-4" size={30} />
 								</div>
 							) : (
-								repos?.map?.((repo, i) => (
+								filteredRepo?.map?.((repo, i) => (
 									<RepoCard repo={repo} key={repo?.id} currentIndex={i} />
 								))
 							)}
