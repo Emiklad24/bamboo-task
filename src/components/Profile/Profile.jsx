@@ -14,8 +14,8 @@ const Profile = () => {
 			<div className="circle absolute -top-7 mb-8">
 				<div className="w-64 h-64 bg-white rounded-full">
 					<img
-						src="https://avatars.githubusercontent.com/u/46732287?v=4"
-						alt=""
+						src={user?.user?.avatar_url || ""}
+						alt={user?.user?.username || ""}
 						className="w-64 h-64 bg-white rounded-full"
 					/>
 				</div>
@@ -31,7 +31,7 @@ const Profile = () => {
 			<div className="mt-20 flex flex-col items-start justify-center border-b py-4">
 				<span className="text-xl font-semibold capitalize">{user?.user?.name || ""}</span>
 				<span className="text-lg text-gray-600 lowercase">
-					{user?.user?.username || ""}
+					{user?.user?.username || user?.user?.login || ""}
 				</span>
 				<button className="my-4 w-full px-4 py-1 text-center text-gray-800 font-semibold text-sm bg-gray-100 border border-gray-300 hover:bg-gray-200 rounded">
 					follow
