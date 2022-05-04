@@ -124,7 +124,7 @@ const RepoCard = ({ repo, currentIndex }) => {
 							></path>
 						</svg>
 						<p className="mx-1">
-							{repo?.license.name || repo?.license || "MIT License"}
+							{repo?.license?.name || repo?.license || "MIT License"}
 						</p>
 					</span>
 
